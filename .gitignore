@@ -11,6 +11,12 @@
 *.txt
 /config
 /bin
+/gradle
+/build
+/eclipse
+build.gradle
+gradlew
+gralew.bat
 # Logs and databases #
 ######################
 *.log
