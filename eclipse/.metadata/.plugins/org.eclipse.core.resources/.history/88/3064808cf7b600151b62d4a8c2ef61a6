@@ -1,9 +1,0 @@
-package conege.spiral6.conegetts;
-
-public class EventCommandClass {
-
-	public EventCommandClass() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
