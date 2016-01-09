@@ -1,0 +1,11 @@
+package conege.spiral6.conegetts;
+
+import net.minecraft.block.Block;
+
+public class Blocks {
+	public static Block exampleBlock;
+	
+	public static final void init(){
+		
+	}
+}

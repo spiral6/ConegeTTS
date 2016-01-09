@@ -1,0 +1,20 @@
+package conege.spiral6.conegetts;
+
+import net.minecraftforge.event.CommandEvent;
+
+public class EventCommandClass {
+		@ForgeSubscribe
+		public void CommandStuff(CommandEvent e){
+			
+			if (e.isCancelable()){
+				e.setCanceled(true);
+			}
+		}
+		
+		minecraftforge.EVENT_BUS.register(new EventCommandClass());
+		
+		
+		
+
+
+}

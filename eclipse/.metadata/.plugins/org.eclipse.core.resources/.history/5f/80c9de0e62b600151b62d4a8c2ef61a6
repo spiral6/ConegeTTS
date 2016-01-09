@@ -1,0 +1,9 @@
+package conege.spiral6.conegetts.Blocks;
+
+public class ExampleBlock extends Blocks {
+
+	public ExampleBlock() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
