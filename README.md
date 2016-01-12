@@ -1,5 +1,5 @@
 # ConegeTTS
-This is a Forge mod that adds Text-to-Speech capabilities to Minecraft accross a server.
+This is a Forge mod that adds Text-to-Speech capabilities to Minecraft across a server.
 
 Built for Minecraft 1.7.10.
 
