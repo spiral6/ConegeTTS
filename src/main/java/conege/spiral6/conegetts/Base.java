@@ -1,5 +1,7 @@
 package conege.spiral6.conegetts;
 
+import javax.speech.EngineException;
+
 import conege.spiral6.conegetts.Commands.TTSCommand;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -43,7 +45,7 @@ public class Base //Start the class Declaration
     }
     
     @EventHandler
-    public void serverLoad(FMLServerStartingEvent event)
+    public void serverLoad(FMLServerStartingEvent event) throws EngineException
     {
       event.registerServerCommand(new TTSCommand());
     }

@@ -16,7 +16,11 @@
 /eclipse
 build.gradle
 gradlew
-gralew.bat
+gradlew.bat
+/.gradle
+/.settings
+.classpath
+.project
 # Logs and databases #
 ######################
 *.log

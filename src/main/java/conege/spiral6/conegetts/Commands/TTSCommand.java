@@ -1,7 +1,11 @@
 package conege.spiral6.conegetts.Commands;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.speech.EngineException;
 
 import net.minecraft.client.audio.SoundManager;
 import net.minecraft.command.ICommand;
@@ -12,11 +16,13 @@ import net.minecraftforge.event.CommandEvent;
 public class TTSCommand implements ICommand{
 		
 		private List aliases;
+		private meh blah;
 	
-		public TTSCommand(){
+		public TTSCommand() throws EngineException{
 			this.aliases = new ArrayList();
 			this.aliases.add("ctts");
 			this.aliases.add("conegetts");
+			blah = new meh();
 		}
 
 		@Override
@@ -71,8 +77,7 @@ public class TTSCommand implements ICommand{
 			
 			
 			
-			
-			
+			blah.speak(dialogue);
 			
 			
 			
