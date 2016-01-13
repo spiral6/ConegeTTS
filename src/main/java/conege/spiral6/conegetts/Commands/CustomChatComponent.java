@@ -9,6 +9,7 @@ public class CustomChatComponent extends ChatComponentText{
 	public CustomChatComponent(String s) {
 		super(s);
 		this.setChatStyle(new ChatStyle().setColor(EnumChatFormatting.YELLOW));
+		
 	}
 	
 }

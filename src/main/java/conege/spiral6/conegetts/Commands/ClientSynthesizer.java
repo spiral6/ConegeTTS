@@ -9,29 +9,16 @@ import javax.speech.synthesis.SynthesizerModeDesc;
 
 
 
-public class meh {
+public class ClientSynthesizer extends Thread{
 	static Synthesizer synthesizer;
-	public meh(String s){
-		try
-		{
-			synthesizer.allocate();
-			synthesizer.resume();
-			synthesizer.speakPlainText(s, null);
-			synthesizer.waitEngineState(Synthesizer.QUEUE_EMPTY);
-			synthesizer.deallocate();
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+	static String dialogue;
 	
-	public static void speak(String s){
+	public static void speak(){
 		try
 		{
 			synthesizer.allocate();
 			synthesizer.resume();
-			synthesizer.speakPlainText(s, null);
+			synthesizer.speakPlainText(dialogue, null);
 			synthesizer.waitEngineState(Synthesizer.QUEUE_EMPTY);
 		}
 		catch(Exception e)
@@ -40,14 +27,15 @@ public class meh {
 		}
 	}
 	
-	public meh() throws EngineException{
+	public void run(){
+		speak();
+	}
+	
+	public ClientSynthesizer(String s) throws EngineException{
 		System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
-
 		Central.registerEngineCentral("com.sun.speech.freetts.jsapi.FreeTTSEngineCentral");
 		synthesizer = Central.createSynthesizer(new SynthesizerModeDesc(Locale.US));
+		dialogue = s;
 	}
 
-	public static void main(String[] args) throws EngineException{
-		
-	}
 }

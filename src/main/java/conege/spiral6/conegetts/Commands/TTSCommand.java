@@ -7,6 +7,9 @@ import java.util.List;
 
 import javax.speech.EngineException;
 
+import conege.spiral6.conegetts.Base;
+import conege.spiral6.conegetts.Events.TTSPacketClient;
+import conege.spiral6.conegetts.Events.TTSPacketServer;
 import net.minecraft.client.audio.SoundManager;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
@@ -16,42 +19,38 @@ import net.minecraftforge.event.CommandEvent;
 public class TTSCommand implements ICommand{
 		
 		private List aliases;
-		private meh blah;
+		private ClientSynthesizer cs;
 	
 		public TTSCommand() throws EngineException{
 			this.aliases = new ArrayList();
 			this.aliases.add("ctts");
 			this.aliases.add("conegetts");
-			blah = new meh();
 		}
 
 		@Override
 		public int compareTo(Object arg0) {
-			// TODO Auto-generated method stub
 			return 0;
 		}
 
 		@Override
 		public String getCommandName() {
-			// TODO Auto-generated method stub
 			return "conegetts";
 		}
 
 		@Override
 		public String getCommandUsage(ICommandSender i) {
-			// TODO Auto-generated method stub
 			return "conegetts <text>";
 		}
 
 		@Override
 		public List getCommandAliases() {
-			// TODO Auto-generated method stub
 			return this.aliases;
 		}
 
 		@Override
 		public void processCommand(ICommandSender i, String[] arr) {
 			EntityPlayer player;
+			
 			if(i instanceof EntityPlayer){
 				player = (EntityPlayer)i;
 			}
@@ -59,25 +58,23 @@ public class TTSCommand implements ICommand{
 				i.addChatMessage(new CustomChatComponent("Player only command."));
 			}
 			
+			if(arr.length == 0){
+				i.addChatMessage(new CustomChatComponent("Invalid arguments."));
+				i.addChatMessage(new CustomChatComponent(this.getCommandUsage(i)));
+				return;
+			}
 			
-			if(arr.length == 0)
-			    {
-				  i.addChatMessage(new CustomChatComponent("Invalid arguments."));
-			      i.addChatMessage(new CustomChatComponent(this.getCommandUsage(i)));
-			      return;
-			    }
 			String dialogue = "";
+			
 			for(String s: arr){
 				dialogue+=s + " ";
 			}
 			
-			i.addChatMessage(new CustomChatComponent(i.getCommandSenderName() + " said this: " +  dialogue));
+			//i.addChatMessage(new CustomChatComponent(i.getCommandSenderName() + " said this: " +  dialogue));
+			//cs.speak(dialogue);
+			Base.network.sendToServer(new TTSPacketServer(dialogue));
 			
 			
-			
-			
-			
-			blah.speak(dialogue);
 			
 			
 			
@@ -90,15 +87,12 @@ public class TTSCommand implements ICommand{
 		}
 
 		@Override
-		public List addTabCompletionOptions(ICommandSender i,
-				String[] arr) {
-			// TODO Auto-generated method stub
+		public List addTabCompletionOptions(ICommandSender i, String[] arr) {
 			return null;
 		}
 
 		@Override
 		public boolean isUsernameIndex(String[] arr, int integer) {
-			// TODO Auto-generated method stub
 			return false;
 		}
 		
